@@ -1,4 +1,4 @@
-import type { SyncableField, TaskContext } from "@/db/schema";
+import type { TaskContext } from "@/db/schema";
 import { htmlToText, textToHtml } from "@/lib/notes";
 import { localToUtc, utcToLocal } from "@/lib/time";
 import type { LookupResult, Provider, RemotePatch, RemoteTask } from "./types";
@@ -184,7 +184,7 @@ export const pipedrive: Provider = {
       throw e;
     }
   },
-  async update(id, patch, _fields: SyncableField[]) {
+  async update(id, patch) {
     await api(`/activities/${id}`, { method: "PATCH", body: JSON.stringify(patchToActivity(patch)) });
   },
   async remove(id) {

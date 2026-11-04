@@ -1,5 +1,4 @@
 import { WebClient } from "@slack/web-api";
-import type { SyncableField } from "@/db/schema";
 import type { LookupResult, Provider, RemotePatch, RemoteTask } from "./types";
 
 /** Loose shape of a List item field: the API returns typed values plus `text`/`value`. */
@@ -166,7 +165,7 @@ export const slack: Provider = {
       throw e;
     }
   },
-  async update(id, patch, _fields: SyncableField[]) {
+  async update(id, patch) {
     const { cols } = await columns(id);
     const cells = patchToCells(id, patch, cols);
     if (!cells.length) return;

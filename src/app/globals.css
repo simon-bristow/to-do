@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --bg: #f7f7f5;
+  --card: #ffffff;
+  --ink: #1d1d1b;
+  --muted: #6b6a65;
+  --line: #e4e3df;
+  --hover: #f0efeb;
+  --accent: #3a5bd9;
+  --accent-soft: #e8edfc;
+  --danger: #c2412d;
+  --danger-soft: #fbeae6;
+  --pipedrive: #1a7f4b;
+  --pipedrive-soft: #e3f3ea;
+  --slack: #7a3f8f;
+  --slack-soft: #f3e8f6;
+  --local: #5b5a55;
+  --local-soft: #ecebe7;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #141413;
+    --card: #1e1e1c;
+    --ink: #ecebe7;
+    --muted: #9a9993;
+    --line: #2f2f2c;
+    --hover: #262624;
+    --accent: #7d97f0;
+    --accent-soft: #232b45;
+    --danger: #f08a75;
+    --danger-soft: #3a211b;
+    --pipedrive: #6fcf97;
+    --pipedrive-soft: #1b2d23;
+    --slack: #d09ae0;
+    --slack-soft: #2d2032;
+    --local: #b9b8b2;
+    --local-soft: #2a2a27;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  input, textarea, select, button { font: inherit; color: inherit; }
 }
