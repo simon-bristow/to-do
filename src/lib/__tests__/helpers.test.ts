@@ -37,7 +37,7 @@ describe("notes", () => {
 describe("pipedrive mapping", () => {
   const ctx = {
     deals: new Map([[7, { id: 7, title: "Big deal" }]]),
-    persons: new Map([[9, { id: 9, name: "Sam", emails: [{ value: "s@x.com", primary: true }], phones: [{ value: "123" }] }]]),
+    persons: new Map([[9, { id: 9, name: "Sam", emails: [{ value: "s@x.com", primary: true }], phones: [{ value: "123\u202c" }, { value: "" }] }]]),
     orgs: new Map([[3, { id: 3, name: "Acme" }]]),
   };
   it("maps activity with context and converts time", () => {

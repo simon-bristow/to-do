@@ -76,8 +76,14 @@ async function byIds<T extends { id: number }>(entity: string, ids: number[]) {
   return map;
 }
 
+// Strip invisible bidi/zero-width characters that sneak in from copy-pasted contact details.
+const clean = (v: string) => v.replace(/[\u200B-\u200F\u202A-\u202E\u2066-\u2069\uFEFF]/g, "").trim();
 const values = (xs?: Labeled[] | null) =>
-  (xs ?? []).filter((x) => x.value).sort((a, b) => Number(!!b.primary) - Number(!!a.primary)).map((x) => x.value);
+  (xs ?? [])
+    .map((x) => ({ ...x, value: clean(x.value ?? "") }))
+    .filter((x) => x.value)
+    .sort((a, b) => Number(!!b.primary) - Number(!!a.primary))
+    .map((x) => x.value);
 
 export function activityToRemote(
   a: Activity,
